@@ -6,6 +6,7 @@ import ProductDetailsView from '../views/ProductDetailsView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import ProfileInfo from '../views/ProfileInfo.vue'
 import ProfileSettings from '../views/ProfileSettings.vue'
+import NotFoundView from '../views/NotFoundView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -18,9 +19,14 @@ const router = createRouter({
       path: '/profile', 
       component: ProfileView,
       children: [
-        { path: 'info', component: ProfileInfo }, // Шлях буде /profile/info
-        { path: 'settings', component: ProfileSettings } // Шлях буде /profile/settings
+        { path: 'info', component: ProfileInfo }, 
+        { path: 'settings', component: ProfileSettings } 
       ]
+    },
+    { 
+      path: '/:pathMatch(.*)*', 
+      name: 'not-found', 
+      component: NotFoundView 
     }
   ]
 })
