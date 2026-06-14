@@ -3,6 +3,9 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import CatalogView from '../views/CatalogView.vue'
 import ProductDetailsView from '../views/ProductDetailsView.vue'
+import ProfileView from '../views/ProfileView.vue'
+import ProfileInfo from '../views/ProfileInfo.vue'
+import ProfileSettings from '../views/ProfileSettings.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -10,7 +13,15 @@ const router = createRouter({
     { path: '/', name: 'home', component: HomeView },
     { path: '/about', name: 'about', component: AboutView },
     { path: '/catalog', name: 'catalog', component: CatalogView },
-    { path: '/catalog/:id', name: 'product-details', component: ProductDetailsView }
+    { path: '/catalog/:id', name: 'product-details', component: ProductDetailsView },
+    { 
+      path: '/profile', 
+      component: ProfileView,
+      children: [
+        { path: 'info', component: ProfileInfo }, // Шлях буде /profile/info
+        { path: 'settings', component: ProfileSettings } // Шлях буде /profile/settings
+      ]
+    }
   ]
 })
 
